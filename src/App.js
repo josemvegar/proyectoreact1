@@ -1,23 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import { Buscador } from "./Components/Buscador";
+import { Crear } from "./Components/Crear";
+import { Footer } from "./Components/EstructuraBasica/Footer";
+import { Header } from "./Components/EstructuraBasica/Header";
+import { Menu } from "./Components/EstructuraBasica/Menu";
+import { ListadoPeliculas } from "./Components/ListadoPeliculas";
 
 function App() {
+  const [listadpState, setListadoState]= useState([]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="layout">
+        {/*<!-- Cabecera del Sitio -->*/}
+        <Header/>
+
+       {/* <!-- Barra de Navegación --> */}
+        <Menu/>
+
+        {/*<!-- Contenido Principal -->*/}
+        <section id="content" className="content">
+            {/*<!-- Aquí va el listado de películas -->*/}
+            <ListadoPeliculas listadpState={listadpState} setListadoState={setListadoState}/>
+        </section>
+
+        {/*<!-- Barra Lateral -->*/}
+        <aside className="lateral">
+            {/*<!-- Buscador -->*/}
+            <Buscador listadpState={listadpState} setListadoState={setListadoState}/>
+            {/*<!-- Añadir Películas -->*/}
+            <Crear setListadoState={setListadoState}/>
+        </aside>
+
+        {/*<!-- Footer -->*/}
+        <Footer/>
     </div>
   );
 }
