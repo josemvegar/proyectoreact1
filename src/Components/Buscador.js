@@ -13,6 +13,7 @@ export const Buscador = ({listadpState, setListadoState}) => {
 
   useEffect(()=>{
     const buscarPeli= () =>{
+      let pelisEncontradas;
     
       // Copiamos el arreglo
       setListaCopia(JSON.parse(localStorage.getItem('pelis')));
@@ -21,9 +22,15 @@ export const Buscador = ({listadpState, setListadoState}) => {
       // Ya se obtiene directamente con el listadpState
   
       // Filtrar para buscar lo que escriba
-      let pelisEncontradas= listaCopia.filter(peli=>{
-        return peli.titulo.toLowerCase().includes(busqueda.toLowerCase());
-      });
+      
+      if(listaCopia!==null){
+        pelisEncontradas= listaCopia.filter(peli=>{
+          return peli.titulo.toLowerCase().includes(busqueda.toLowerCase());
+        });
+      }else{
+        pelisEncontradas=[];
+      }
+      
   
       // Comprobar que escriba mas de 1 caracter o si se consigue algo
       // Dar valor de lo que tenga el localStorage
