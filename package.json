@@ -11,7 +11,7 @@
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
-  "homepage": "https://alvexltda.cl/pruebita/",
+  "homepage": "https://resplendent-genie-8d291e.netlify.app/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
